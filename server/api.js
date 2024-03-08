@@ -10,7 +10,7 @@ let{getdata,dbconnect,record,insertdata,getPosts}=require('./dbconn');
 
 const secretKey= 'seckey';
 
-function verifytoken(req, res, next){
+function verifyToken(req, res, next){
     const token = req.headers.authorization;
 
     if(!token){
@@ -26,7 +26,7 @@ function verifytoken(req, res, next){
     })
 }
 
-app.get('/validate-token', jwt.verifytoken ,(req, res)=>{
+app.get('/validate-token', verifyToken ,(req, res)=>{
     res.json({message: 'This is a protected route', userId})
 });
 
