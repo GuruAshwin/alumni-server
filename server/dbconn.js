@@ -111,7 +111,7 @@ const dbName = 'alumni';
 // Function to connect to MongoDB
 async function dbconnect() {
     try {
-        const client = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+        const client = await MongoClient.connect(url);
         console.log('Connected to MongoDB');
         db = client.db(dbName); // Set the reference to the database
     } catch (err) {
