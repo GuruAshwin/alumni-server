@@ -8,6 +8,28 @@ app.use(bodyParser.json());
 const jwt = require('jsonwebtoken');
 let{getdata,dbconnect,record,insertdata,getPosts}=require('./dbconn');
 
+const secretKey= 'seckey';
+
+function verifytoken(req, res, next){
+    const token = req.headers.authorization;
+
+    if(!token){
+        return res.status(403).json({error: 'Token is missing'});
+    }
+
+    jwt.verify(token, secretKey, (err, decoded)=>{
+        if(err){
+            return res.status(401).json({error: 'Invalid token'});
+        }
+        req.userId=decoded.userId;
+        next();
+    })
+}
+
+app.get('/api/protected', jwt.verifytoken ,(req, res)=>{
+    res.json({message: 'This is a protected route', userId})
+});
+
 app.get('/', async(req, res)=>{
     res.send("<h1>this is server</h1>")
 })
