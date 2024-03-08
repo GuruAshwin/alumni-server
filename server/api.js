@@ -26,7 +26,7 @@ function verifytoken(req, res, next){
     })
 }
 
-app.get('/api/protected', jwt.verifytoken ,(req, res)=>{
+app.get('/validate-token', jwt.verifytoken ,(req, res)=>{
     res.json({message: 'This is a protected route', userId})
 });
 
