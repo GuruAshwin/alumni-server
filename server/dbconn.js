@@ -103,9 +103,10 @@ let db; // This variable will hold the reference to the database connection
 
 
 
-
+//mongodb+srv://alumni:alumni@cluster0.1znwmui.mongodb.net/?retryWrites=true&w=majority
 // MongoDB connection URI
-const url = 'mongodb+srv://alumni:alumni@cluster0.1znwmui.mongodb.net/?retryWrites=true&w=majority';
+const url = 'mongodb+srv://alumni:alumni@cluster0.1znwmui.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
 const dbName = 'alumni';
 
 // Function to connect to MongoDB
